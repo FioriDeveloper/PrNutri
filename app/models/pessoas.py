@@ -1,6 +1,9 @@
-from pydantic import BaseModel,ConfigDict
-from database.data import Base
-from sqlalchemy import Integer,Float,String, Column,relationship
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Integer, Column, ForeignKey,String, Float
+from sqlalchemy.orm import  relationship
+from pydantic import BaseModel
+
+Base = declarative_base()
 
 
 
@@ -10,7 +13,7 @@ class Pessoa (Base):
     __tablename__=  "pessoas"
     #base usuarios
     
-    cpf = Column(Integer, primary_key= True, autoincrement= True, index= True)
+    cpf = Column(String(18), primary_key= True, index= True)
     nome = Column(String, nullable= False, index= True)
     idade = Column(Integer, nullable= False, index= True)
     peso = Column(Float, nullable= False, index= True)
