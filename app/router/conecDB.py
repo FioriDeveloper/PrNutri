@@ -15,7 +15,7 @@ engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
 
 #ligação com o banco vem do BIND= ENGINE(BIND significa LIGAR) o resto é mais configuraçoões ao iniciar a sessão com o db. 
-SessionLocal = sessionmaker(autoflush=False, autocommit = False, bind=  engine )
+SessionLocal = sessionmaker(autoflush=False, autocommit = False, bind =  engine )
 
 
 

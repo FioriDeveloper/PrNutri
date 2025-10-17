@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy import Session
+from sqlalchemy.orm import Session
 from app.models.dieta import Dieta,CreateDieta
 from database.data import get_db
 
 
-router =  APIRouter("/dieta", tags=["Dieta"])
+router =  APIRouter(prefix="/dieta", tags=["Dieta"])
 
 
 

@@ -1,6 +1,6 @@
 from sqlalchemy.orm import declarative_base, relationship
 from sqlalchemy import Integer, Column, ForeignKey, String
-from conecDB import Base
+from database.data import Base
 from pydantic import BaseModel
 
 

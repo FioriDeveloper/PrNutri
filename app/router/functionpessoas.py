@@ -1,16 +1,16 @@
 from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy import Session
-from app.models.pessoa import Pessoa,CreatePessoa, DeletePessoa
-from database.data import get_db
+from sqlalchemy.orm import Session
+from app.models.pessoas import Pessoa,CreatePessoa, DeletePessoa
+from app.router.conecDB import get_db
 
 
 
 
 
 #Prefixo da rota, ela organiza e identifica as rotas/funções de pessoas, que são um CRUD .
-router =  APIRouter("/pessoas", tags=["Pessoas"])
+router =  APIRouter(prefix="/pessoas", tags=["Pessoas"])
 
-@router.post("/", response_model=CreatePessoa)
+@router.post("/create", response_model=CreatePessoa)
 def create_pessoa(pessoa: CreatePessoa, db: Session = Depends(get_db)):
     
     try: 
@@ -20,7 +20,7 @@ def create_pessoa(pessoa: CreatePessoa, db: Session = Depends(get_db)):
         nome = pessoa.nome ,
         idade =  pessoa.idade,
         peso = pessoa.peso,  
-        altura =  pessoa.altura 
+        altura =  pessoa.altura,
         imc =  pessoa.imc
        )
 

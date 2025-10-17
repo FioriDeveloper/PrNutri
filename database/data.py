@@ -2,10 +2,11 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
 
-SQLALCHEMY_DATABASE_URL = "///./tabela.db"
+
+SQLALCHEMY_DATABASE_URL = "sqlite:///./meubanco.db"
 
 
-Base =  declarative_base
+Base =  declarative_base()
 
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
