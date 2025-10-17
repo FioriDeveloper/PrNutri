@@ -2,7 +2,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Integer, Column, ForeignKey, String,Float
 from sqlalchemy.orm import  relationship
 
-Base = declarative_base()
+from conecDB import Base
 
 
 

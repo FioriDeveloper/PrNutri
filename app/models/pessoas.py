@@ -27,8 +27,14 @@ class Pessoa (Base):
 
 
 class CreatePessoa(BaseModel):
-    cpf : int 
+    cpf : str
     nome : str
     idade : int
     peso : float
     altura : float
+    imc: int 
+
+
+
+class DeletePessoa (BaseModel):
+    cpf: str

@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import Session
-from models.pessoas import Pessoa,CreatePessoa, DeletePessoa
+from app.models.pessoa import Pessoa,CreatePessoa, DeletePessoa
+from database.data import get_db
 
 
 
@@ -20,6 +21,7 @@ def create_pessoa(pessoa: CreatePessoa, db: Session = Depends(get_db)):
         idade =  pessoa.idade,
         peso = pessoa.peso,  
         altura =  pessoa.altura 
+        imc =  pessoa.imc
        )
 
        db.add(nova_pessoa)

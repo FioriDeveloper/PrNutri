@@ -1,17 +1,32 @@
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Integer, Column, ForeignKey ,String
-from sqlalchemy.orm import  relationship
+from sqlalchemy.orm import declarative_base, relationship
+from sqlalchemy import Integer, Column, ForeignKey, String
+from conecDB import Base
+from pydantic import BaseModel
 
-import pessoas
 
-Base = declarative_base()
 
-class dieta(Base):
 
-    __tablename__=  "dieta"
-    id = Column(Integer, ForeignKey("pessoas.cpf"), primary_key=True)
-    qtd_refeicoes = Column(Integer, nullable= False, index= True)
+class Dieta(Base):
+    __tablename__ = "dieta"
 
-    #relacionamentos
-    cpf = relationship("pessoas", back_populates="dieta")
-    itens =  relationship("itens", back_populates="dieta")
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    cpf_pessoa = Column(String, ForeignKey("pessoas.cpf"), nullable=False, unique = True)
+    qtd_refeicoes = Column(Integer, nullable=False, index=True)
+
+    # relacionamentos
+    pessoas = relationship("Pessoa", back_populates="dieta")
+
+
+class CreateDieta (BaseModel):
+
+    cpf: str
+    qtd_refeicoes: int
+
+
+#USAREMOS COMO TESTE O (DICT) UM DICIONARIO EM PYTHON PARA PODER SIMPLIFICAR A ENTRADA DE DADOS.
+
+
+
+#para deletar uma dieta vamos usar o cpf como instancia do objeto na hora de deletar 
+
+    
